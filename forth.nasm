@@ -30,6 +30,11 @@ defword 'run', RUN, \
   LIT, 0Ah, EMIT,   \
   LIT, 42, DUP, PLUS, SYS_EXIT
 
+defcode '+', PLUS
+  pop rax
+  add [rsp], rax
+  next
+
 section .data
 align 4096
 resb 4096
