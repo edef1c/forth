@@ -27,3 +27,6 @@ defword 'sysexit', SYS_EXIT, LIT, 60, SYSCALL1
 
 ; emit ( char -- )
 defword 'emit', EMIT, SP_FETCH, LIT, 1, SWAP, LIT, 1, LIT, 1, SYSCALL3, DROP, EXIT
+
+; key ( -- char )
+defword 'key', KEY, LIT, 0, SP_FETCH, LIT, 0, SWAP, LIT, 1, LIT, 0, SYSCALL3, DROP, EXIT
