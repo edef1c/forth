@@ -1,3 +1,8 @@
 forth: forth.o
-forth.o: forth.nasm
+include forth.d
+
+%.d: %.nasm
+	@(echo -n $(@:.d=.o) $@ && nasm -M $<) > $@
+
+%.o: %.nasm
 	nasm -f elf64 $< -o $@
