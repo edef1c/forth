@@ -9,8 +9,8 @@ defcode 'lit', LIT
   push rax
   next
 
-; ptr ( x -- x xptr )
-defcode 'ptr', PTR
+; sp@ ( -- a-addr )
+defcode 'sp@', SP_FETCH
   push rsp
   next
 
