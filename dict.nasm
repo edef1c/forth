@@ -1,17 +1,17 @@
 ; vim: ft=nasm
 
-%define wordlink 0
-
 %macro defdict 2
 %push
   %define %$name     %1
   %define %$symbol   %2
   %strlen %$name_len %$name
 
-  section .rodata
+  section .dict
+  dq %%word
+
+  section .data
   %%word:
-  dq wordlink
-  %define wordlink %%word
+  dq 0
   db %$name_len, %$name
   align 8, db 0
   global %$symbol

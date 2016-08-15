@@ -2,7 +2,7 @@
 %include "dict.nasm"
 %include "vm.nasm"
 
-extern stdlib, docol, KEY, LIT, SYS_EXIT
+extern dictptr, docol, KEY, LIT, SYS_EXIT
 
 defword 'run', RUN, W0RD, FIND, TCFA, INVOKE, LIT, 0, SYS_EXIT
 
@@ -33,7 +33,7 @@ defcode 'find', FIND
   pushret rsi
   pop r8  ; str.len
   pop r9  ; str.ptr
-  mov rdx, stdlib
+  mov rdx, [dictptr]
 .start:
   test rdx, rdx
   je .done

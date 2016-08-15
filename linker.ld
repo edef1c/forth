@@ -9,6 +9,11 @@ SECTIONS {
   .rodata : ALIGN(0x1000) {
     *(.rodata)
   }
+  .dict : {
+    __dict_start = .;
+    *(.dict)
+    __dict_end = .;
+  }
   .data : ALIGN(0x1000) {
     *(.data)
   }
