@@ -1,5 +1,5 @@
 ; vim: ft=nasm
-%include "def.nasm"
+%include "dict.nasm"
 
 extern docol, LIT, EMIT, DUP, PLUS, SYS_EXIT
 

@@ -1,6 +1,6 @@
 ; vim: ft=nasm
 %include "util.nasm"
-%include "def.nasm"
+%include "dict.nasm"
 %include "vm.nasm"
 %include "stack.nasm"
 %include "sys.nasm"
