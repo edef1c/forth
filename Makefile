@@ -1,5 +1,5 @@
 objects = hello interpreter
-libs = forth.o sys.o
+libs = forth.o stack.o sys.o
 
 all: $(objects)
 .PHONY: all

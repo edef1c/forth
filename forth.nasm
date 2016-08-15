@@ -1,7 +1,6 @@
 ; vim: ft=nasm
 %include "dict.nasm"
 %include "vm.nasm"
-%include "stack.nasm"
 
 extern RUN
 extern __dict_start, __dict_end

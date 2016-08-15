@@ -1,5 +1,7 @@
 ;; Words for stack operations
 ; vim: ft=nasm
+%include "dict.nasm"
+%include "vm.nasm"
 
 ; lit
 ; compile-time: ( x -- )
