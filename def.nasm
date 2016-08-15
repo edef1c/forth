@@ -12,8 +12,8 @@
   %%word:
   dq wordlink
   %define wordlink %%word
-  db %$name_len
-  dq %$name
+  db %$name_len, %$name
+  align 8, db 0
   global %$symbol
   %$symbol:
   dq %$code
