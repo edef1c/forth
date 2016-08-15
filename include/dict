@@ -31,13 +31,17 @@
   dq docol, %3
 %endmacro
 
-%macro defvar 1
+%macro defvar 2
 %push
   %defstr %$name, %1
   defdict %$name, %1
   dq dovar
   global var_%1
   var_%1:
-  dq 0
+  dq %2
 %pop
+%endmacro
+
+%macro defvar 1
+  defvar %1, 0
 %endmacro
