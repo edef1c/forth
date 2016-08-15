@@ -35,5 +35,5 @@ defcode '+', PLUS
 
 section .data
 align 4096
-resb 4096
+times 4096 db 0
 retstack:
