@@ -6,8 +6,8 @@ all: $(objects)
 .PHONY: all
 
 ASFLAGS += -I include/
--include $(objects:.d)
--include $(libs:.d)
+-include $(objects:=.d)
+-include $(libs:.o=.d)
 
 %: linker.ld %.o $(libs)
 	ld -static -nostdlib -T linker.ld $(filter %.o,$^) -o $@
