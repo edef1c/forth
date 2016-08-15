@@ -14,8 +14,3 @@ section .bss
 align 4096
 resb 4096
 retstack:
-
-defcode '+', PLUS
-  pop rax
-  add [rsp], rax
-  next

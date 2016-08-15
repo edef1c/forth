@@ -1,6 +1,6 @@
 ; vim: ft=nasm
 %include "forth"
-extern LIT, EMIT, DUP, PLUS, SYS_EXIT
+extern LIT, EMIT, SYS_EXIT
 
 defword 'run', RUN, \
   LIT, 'h', EMIT,   \
@@ -16,4 +16,4 @@ defword 'run', RUN, \
   LIT, 'l', EMIT,   \
   LIT, 'd', EMIT,   \
   LIT, 0Ah, EMIT,   \
-  LIT, 42, DUP, PLUS, SYS_EXIT
+  LIT, 0,   SYS_EXIT
