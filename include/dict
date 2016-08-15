@@ -7,10 +7,10 @@
   %strlen %$name_len %$name
 
   section .dict
-  dq %%word
+  dq %2.header
 
   section .data
-  %%word:
+  %2.header:
   dq 0
   db %$name_len, %$name
   align 8, db 0
@@ -21,9 +21,9 @@
 
 %macro defcode 2
   defdict %1, %2
-  dq %%code
-  section .text
-  %%code:
+  dq .body
+  section .text.%2
+  .body:
 %endmacro
 
 %macro defword 3+
