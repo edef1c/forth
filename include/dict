@@ -36,6 +36,11 @@
   dq docol, %3
 %endmacro
 
+%macro defwordx 4+
+  defdict %1, %2, %3
+  dq docol, %4
+%endmacro
+
 %macro defvar 1-2 0
 %push
   %defstr %$name, %1

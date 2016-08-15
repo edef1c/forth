@@ -10,6 +10,13 @@ defcode 'lit', LIT
   push rax
   next
 
+; fetch ( x-ptr -- x )
+defcode '@', FETCH
+  mov rbx, [rsp]
+  mov rax, [rbx]
+  mov [rsp], rax
+  next
+
 ; sp@ ( -- a-addr )
 defcode 'sp@', SP_FETCH
   push rsp
