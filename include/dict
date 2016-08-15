@@ -1,5 +1,9 @@
 ; vim: ft=nasm
 
+%define F_IMM     0x80
+%define F_HIDDEN  0x20
+%define F_LENMASK 0x1f
+
 %macro defdict 2-3 0
 %push
   %define %$name     %1

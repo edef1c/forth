@@ -28,6 +28,7 @@ defcode 'find', FIND
   je .done
   ; check if length matches
   mov al, [rdx+8]
+  and al, F_HIDDEN|F_LENMASK ; mask out the flags, but respect F_HIDDEN
   cmp al, r8b
   jne .next
   ; check if the content matches
@@ -48,7 +49,8 @@ defcode 'find', FIND
 defcode '>CFA', TCFA
   pop rdi
   xor rax, rax
-  mov al,  [rdi+8]
+  mov al, [rdi+8]
+  and al, F_LENMASK
   lea rdi, [rdi+8+rax]
   add rdi, 7
   and rdi, ~7
