@@ -31,7 +31,7 @@
   dq docol, %3
 %endmacro
 
-%macro defvar 2
+%macro defvar 1-2 0
 %push
   %defstr %$name, %1
   defdict %$name, %1
@@ -40,8 +40,4 @@
   var_%1:
   dq %2
 %pop
-%endmacro
-
-%macro defvar 1
-  defvar %1, 0
 %endmacro
