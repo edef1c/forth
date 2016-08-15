@@ -1,11 +1,13 @@
 objects = hello interpreter
+libs = forth.o sys.o
+
 all: $(objects)
 .PHONY: all
 
--include forth.d
 -include $(objects:.d)
+-include $(libs:.d)
 
-%: linker.ld %.o forth.o
+%: linker.ld %.o $(libs)
 	ld -static -nostdlib -T linker.ld $(filter %.o,$^) -o $@
 
 %.d: %.nasm
