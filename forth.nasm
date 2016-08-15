@@ -4,6 +4,7 @@
 
 extern RUN
 extern __dict_start, __dict_end
+defvar latest
 
 global _start
 _start:
@@ -17,7 +18,7 @@ linker:
   mov rbx, rax
   cmp rsi, __dict_end
   jne .next
-  mov [dictptr], rbx
+  mov [var_latest], rbx
 main:
   mov rbp, retstack
   callword RUN
@@ -27,14 +28,18 @@ section .bss
 align 4096
 resb 4096
 retstack:
-global dictptr
-dictptr: resq 1
 
 section .text
 global docol
 docol:
   pushret rsi
   lea rsi, [rax+8]
+  next
+
+global dovar
+dovar:
+  mov rbx, [rax+8]
+  push rbx
   next
 
 defcode 'exit', EXIT

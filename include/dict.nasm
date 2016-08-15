@@ -30,3 +30,14 @@
   defdict %1, %2
   dq docol, %3
 %endmacro
+
+%macro defvar 1
+%push
+  %defstr %$name, %1
+  defdict %$name, %1
+  dq dovar
+  global var_%1
+  var_%1:
+  dq 0
+%pop
+%endmacro
