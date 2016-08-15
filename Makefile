@@ -1,9 +1,11 @@
 objects = hello interpreter
 libs = forth.o stack.o sys.o
+ASFLAGS = -f elf64 -g
 
 all: $(objects)
 .PHONY: all
 
+ASFLAGS += -I include/
 -include $(objects:.d)
 -include $(libs:.d)
 
@@ -11,7 +13,7 @@ all: $(objects)
 	ld -static -nostdlib -T linker.ld $(filter %.o,$^) -o $@
 
 %.d: %.nasm
-	@(echo -n $(@:.d=.o) $@ && nasm -M $<) > $@
+	@(echo -n $(@:.d=.o) $@ && nasm -M $(ASFLAGS) $<) > $@
 
 %.o: %.nasm
-	nasm -g -f elf64 $< -o $@
+	nasm $(ASFLAGS) $< -o $@
