@@ -1,10 +1,10 @@
-all: hello
+objects = hello
+all: $(objects)
 .PHONY: all
 
-include forth.d
-
-hello: hello.o forth.o
-include hello.d
+-include forth.d
+-include $(objects:.d)
+$(objects): forth.o
 
 %.d: %.nasm
 	@(echo -n $(@:.d=.o) $@ && nasm -M $<) > $@
