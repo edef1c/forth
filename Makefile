@@ -1,5 +1,5 @@
 objects = hello interpreter
-libs = forth.o stack.o sys.o
+libs = forth stack sys
 ASFLAGS = -f elf64 -g
 
 all: $(objects)
@@ -7,9 +7,9 @@ all: $(objects)
 
 ASFLAGS += -I include/
 -include $(objects:=.d)
--include $(libs:.o=.d)
+-include $(libs:=.d)
 
-%: linker.ld %.o $(libs)
+%: linker.ld %.o $(libs:=.o)
 	ld -static -nostdlib -T linker.ld $(filter %.o,$^) -o $@
 
 %.d: %.nasm
