@@ -14,11 +14,12 @@ _start:
   callword RUN
   ud2
 
-section .data
+section .bss
 align 4096
-times 4096 db 0
+resb 4096
 retstack:
 
+section .text
 global docol
 docol:
   pushret rsi
