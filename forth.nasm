@@ -7,8 +7,8 @@
 
 extern RUN
 
-global main
-main:
+global _start
+_start:
   cld
   mov rbp, retstack
   callword RUN

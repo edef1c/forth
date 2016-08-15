@@ -2,6 +2,7 @@ objects = hello
 all: $(objects)
 .PHONY: all
 
+LDFLAGS = -nostdlib
 -include forth.d
 -include $(objects:.d)
 $(objects): forth.o
