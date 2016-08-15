@@ -14,6 +14,7 @@
   %define wordlink %%word
   db %$name_len
   dq %$name
+  global %$symbol
   %$symbol:
   dq %$code
   section .text
@@ -33,6 +34,7 @@
   %define wordlink %%word
   db %$name_len
   dq %$name
+  global %$symbol
   %$symbol:
   dq docol, %3
 %pop

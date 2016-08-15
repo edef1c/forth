@@ -19,6 +19,7 @@
   lea rbp, [rbp+8]
 %endmacro
 
+global docol
 docol:
   pushret rsi
   lea rsi, [rax+8]
