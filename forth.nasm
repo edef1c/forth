@@ -19,6 +19,16 @@ align 4096
 times 4096 db 0
 retstack:
 
+global docol
+docol:
+  pushret rsi
+  lea rsi, [rax+8]
+  next
+
+defcode 'exit', EXIT
+  popret rsi
+  next
+
 defcode '+', PLUS
   pop rax
   add [rsp], rax

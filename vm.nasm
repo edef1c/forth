@@ -19,16 +19,6 @@
   lea rbp, [rbp+8]
 %endmacro
 
-global docol
-docol:
-  pushret rsi
-  lea rsi, [rax+8]
-  next
-
-defcode 'exit', EXIT
-  popret rsi
-  next
-
 %macro callword 0
   mov rsi, %%inst
   jmp [rax]
