@@ -1,0 +1,5 @@
+; vim: ft=nasm
+%include "vm"
+%include "dict"
+extern docol, dovar, EXIT
+extern var_latest

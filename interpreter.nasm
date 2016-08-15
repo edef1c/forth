@@ -1,7 +1,5 @@
 ; vim: ft=nasm
-%include "dict"
-%include "vm"
-
+%include "forth"
 extern var_latest, docol, KEY, LIT, SYS_EXIT
 
 defword 'run', RUN, W0RD, FIND, TCFA, INVOKE, LIT, 0, SYS_EXIT

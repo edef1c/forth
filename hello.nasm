@@ -1,7 +1,6 @@
 ; vim: ft=nasm
-%include "dict"
-
-extern docol, LIT, EMIT, DUP, PLUS, SYS_EXIT
+%include "forth"
+extern LIT, EMIT, DUP, PLUS, SYS_EXIT
 
 defword 'run', RUN, \
   LIT, 'h', EMIT,   \

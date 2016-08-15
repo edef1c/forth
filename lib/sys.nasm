@@ -1,9 +1,7 @@
 ;; Words for host system interaction
 ; vim: ft=nasm
-%include "vm"
-%include "dict"
-
-extern docol, LIT, SP_FETCH, SWAP, DROP, EXIT
+%include "forth"
+extern LIT, SP_FETCH, SWAP, DROP
 
 ; trap ( -- )
 defcode 'trap', TRAP

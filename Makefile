@@ -1,5 +1,5 @@
 objects = hello interpreter
-libs = forth core/linker lib/stack lib/sys
+libs = forth core/vm core/linker lib/stack lib/sys
 ASFLAGS = -f elf64 -g
 
 all: $(objects)

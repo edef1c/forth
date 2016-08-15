@@ -1,6 +1,7 @@
 ; vim: ft=nasm
-extern __dict_start, __dict_end
-extern var_latest
+%include "dict"
+extern __dict_start, __dict_end, dovar
+defvar latest
 
 global linker
 linker:

@@ -1,9 +1,6 @@
 ; vim: ft=nasm
-%include "dict"
-%include "vm"
-
+%include "forth"
 extern RUN, linker
-defvar latest
 
 global _start
 _start:
@@ -17,23 +14,6 @@ section .bss
 align 4096
 resb 4096
 retstack:
-
-section .text
-global docol
-docol:
-  pushret rsi
-  lea rsi, [rax+8]
-  next
-
-global dovar
-dovar:
-  mov rbx, [rax+8]
-  push rbx
-  next
-
-defcode 'exit', EXIT
-  popret rsi
-  next
 
 defcode '+', PLUS
   pop rax
