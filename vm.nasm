@@ -29,11 +29,15 @@ defcode 'exit', EXIT
   popret rsi
   next
 
-%macro callword 1
+%macro callword 0
   mov rsi, %%inst
-  mov rax, %1
   jmp [rax]
   %%inst: dq %%word
   %%word: dq %%cont
   %%cont:
+%endmacro
+
+%macro callword 1
+  mov rax, %1
+  callword
 %endmacro
