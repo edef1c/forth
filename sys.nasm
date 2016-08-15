@@ -1,6 +1,5 @@
 ;; Words for host system interaction
 ; vim: ft=nasm
-%include "util.nasm"
 %include "vm.nasm"
 %include "dict.nasm"
 
@@ -10,6 +9,13 @@ extern docol, LIT, SP_FETCH, SWAP, DROP, EXIT
 defcode 'trap', TRAP
   int3
   next
+
+%macro synthpop 0-*
+  %rep %0
+    pop %1
+  %rotate 1
+  %endrep
+%endmacro
 
 ; syscall1 ( num -- ret )
 defcode 'syscall1', SYSCALL1
