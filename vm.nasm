@@ -27,3 +27,12 @@ docol:
 defcode 'exit', EXIT
   popret rsi
   next
+
+%macro callword 1
+  mov rsi, %%inst
+  mov rax, %1
+  jmp [rax]
+  %%inst: dq %%word
+  %%word: dq %%cont
+  %%cont:
+%endmacro

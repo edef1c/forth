@@ -9,10 +9,8 @@ global main
 main:
   cld
   mov rbp, retstack
-  xor rsi, rsi
-
-  mov rax, RUN
-  jmp [rax]
+  callword RUN
+  ud2
 
 defword 'run', RUN, \
   LIT, 'h', EMIT,   \
