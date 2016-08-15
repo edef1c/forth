@@ -1,5 +1,5 @@
 objects = hello interpreter
-libs = forth stack sys
+libs = forth linker stack sys
 ASFLAGS = -f elf64 -g
 
 all: $(objects)

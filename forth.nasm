@@ -2,24 +2,13 @@
 %include "dict.nasm"
 %include "vm.nasm"
 
-extern RUN
-extern __dict_start, __dict_end
+extern RUN, linker
 defvar latest
 
 global _start
 _start:
   cld
-linker:
-  xor rbx, rbx
-  mov rsi, __dict_start
-.next:
-  lodsq
-  mov [rax], rbx
-  mov rbx, rax
-  cmp rsi, __dict_end
-  jne .next
-  mov [var_latest], rbx
-main:
+  call linker
   mov rbp, retstack
   callword RUN
   ud2
