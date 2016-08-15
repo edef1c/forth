@@ -1,4 +1,4 @@
-objects = hello
+objects = hello interpreter
 all: $(objects)
 .PHONY: all
 
