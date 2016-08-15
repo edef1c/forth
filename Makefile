@@ -3,7 +3,7 @@ libs = forth stack sys
 ASFLAGS = -f elf64 -g
 
 all: $(objects)
-.PHONY: all
+.PHONY: all clean
 
 ASFLAGS += -I include/
 -include $(objects:=.d)
@@ -17,3 +17,6 @@ ASFLAGS += -I include/
 
 %.o: %.nasm
 	nasm $(ASFLAGS) $< -o $@
+
+clean:
+	rm -f $(objects) *.o *.d
