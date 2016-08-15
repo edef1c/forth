@@ -2,10 +2,11 @@ objects = hello interpreter
 all: $(objects)
 .PHONY: all
 
-LDFLAGS = -nostdlib
 -include forth.d
 -include $(objects:.d)
-$(objects): forth.o
+
+%: linker.ld %.o forth.o
+	ld -static -nostdlib -T linker.ld $(filter %.o,$^) -o $@
 
 %.d: %.nasm
 	@(echo -n $(@:.d=.o) $@ && nasm -M $<) > $@
