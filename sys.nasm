@@ -1,7 +1,7 @@
 ;; Words for host system interaction
 ; vim: ft=nasm
-%include "vm.nasm"
-%include "dict.nasm"
+%include "vm"
+%include "dict"
 
 extern docol, LIT, SP_FETCH, SWAP, DROP, EXIT
 

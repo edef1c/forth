@@ -1,6 +1,6 @@
 ; vim: ft=nasm
-%include "dict.nasm"
-%include "vm.nasm"
+%include "dict"
+%include "vm"
 
 extern var_latest, docol, KEY, LIT, SYS_EXIT
 
