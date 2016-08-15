@@ -3,3 +3,4 @@
 %include "dict"
 extern docol, dovar, EXIT
 extern latest, var_latest
+extern here, var_here
