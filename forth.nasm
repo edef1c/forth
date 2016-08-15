@@ -23,3 +23,6 @@ defcode '+', PLUS
   pop rax
   add [rsp], rax
   next
+
+global stdlib
+stdlib equ wordlink
