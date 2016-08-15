@@ -11,4 +11,4 @@ $(objects): forth.o
 	@(echo -n $(@:.d=.o) $@ && nasm -M $<) > $@
 
 %.o: %.nasm
-	nasm -f elf64 $< -o $@
+	nasm -g -f elf64 $< -o $@
