@@ -39,3 +39,24 @@ defcode 'swap', SWAP
 defcode 'drop', DROP
   pop rax
   next
+
+; rot ( w1 w2 w3 -- w2 w3 w1 )
+defcode 'rot', ROT
+  pop rax
+  pop rbx
+  pop rcx
+  push rbx
+  push rax
+  push rcx
+  next
+
+; -rot ( w1  w2  w3  -- w3  w1  w2  )
+; this is gforth's -rot, which appears to work differently from Jones Forth's
+defcode '-rot', NROT
+  pop rax
+  pop rbx
+  pop rcx
+  push rax
+  push rcx
+  push rbx
+  next
