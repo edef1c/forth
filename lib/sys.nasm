@@ -31,7 +31,7 @@ defcode 'syscall3', SYSCALL3
   popret rsi
   next
 
-; sysexit ( -- )
+; sysexit ( ret -- )
 defword 'sysexit', SYS_EXIT, LIT, 60, SYSCALL1
 
 ; emit ( char -- )
