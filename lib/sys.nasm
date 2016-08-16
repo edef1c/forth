@@ -1,7 +1,7 @@
 ;; Words for host system interaction
 ; vim: ft=nasm
 %include "forth"
-extern LIT, SP_FETCH, SWAP, DROP
+extern LIT, SP_FETCH, SWAP, DROP, NROT
 
 ; trap ( -- )
 defcode 'trap', TRAP
@@ -42,3 +42,5 @@ defword 'syswrite', SYS_WRITE, LIT, 1, SYSCALL3, EXIT
 defword 'key', KEY, LIT, 0, SP_FETCH, LIT, 0, SWAP, LIT, 1, SYS_READ, DROP, EXIT
 ; emit ( char -- )
 defword 'emit', EMIT, SP_FETCH, LIT, 1, SWAP, LIT, 1, SYS_WRITE, DROP, EXIT
+; tell ( str len -- )
+defword 'tell', TELL, LIT, 0, NROT, SYS_WRITE, DROP, EXIT
