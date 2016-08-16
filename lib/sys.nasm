@@ -33,9 +33,12 @@ defcode 'syscall3', SYSCALL3
 
 ; sysexit ( ret -- )
 defword 'sysexit', SYS_EXIT, LIT, 60, SYSCALL1
-
-; emit ( char -- )
-defword 'emit', EMIT, SP_FETCH, LIT, 1, SWAP, LIT, 1, LIT, 1, SYSCALL3, DROP, EXIT
+; sysread ( fd buf len -- )
+defword 'sysread', SYS_READ, LIT, 0, SYSCALL3, EXIT
+; syswrite ( fd buf len -- ret )
+defword 'syswrite', SYS_WRITE, LIT, 1, SYSCALL3, EXIT
 
 ; key ( -- char )
-defword 'key', KEY, LIT, 0, SP_FETCH, LIT, 0, SWAP, LIT, 1, LIT, 0, SYSCALL3, DROP, EXIT
+defword 'key', KEY, LIT, 0, SP_FETCH, LIT, 0, SWAP, LIT, 1, SYS_READ, DROP, EXIT
+; emit ( char -- )
+defword 'emit', EMIT, SP_FETCH, LIT, 1, SWAP, LIT, 1, SYS_WRITE, DROP, EXIT
