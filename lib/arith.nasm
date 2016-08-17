@@ -35,6 +35,29 @@ defword '/', DIV, DIVMOD, SWAP, DROP, EXIT
 ; mod ( dividend divisor -- remainder )
 defword 'mod', MOD, DIVMOD, DROP, EXIT
 
+; is-numeric ( str len -- bool )
+defcode 'is-numeric', IS_NUMERIC
+  mov rdi, rsi
+  popeach rcx, rsi
+  test rcx, rcx
+  jz .fail
+.next:
+  lodsb
+  cmp al, '0'
+  jb .fail
+  cmp al, '9'
+  jg .fail
+  dec rcx
+  jnz .next
+.done:
+  push ~0
+  mov rsi, rdi
+  next
+.fail:
+  push 0
+  mov rsi, rdi
+  next
+
 ; number ( str len -- number )
 defcode 'number', NUMBER
   popeach rcx, rbx
