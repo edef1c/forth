@@ -32,6 +32,13 @@
   callword
 %endmacro
 
+%macro pusheach 0-*
+  %rep %0
+    push %1
+  %rotate 1
+  %endrep
+%endmacro
+
 %macro popeach 0-*
   %rep %0
     pop %1
