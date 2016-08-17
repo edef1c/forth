@@ -34,6 +34,12 @@ defcode 'hidden', HIDDEN
   xor byte [rdi+8], F_HIDDEN
   next
 
+; immediate ( wordptr -- )
+defcode 'immediate', IMMEDIATE
+  pop rax
+  xor byte [rdi+8], F_IMM
+  next
+
 defvar state
 
 defcode '[', LBRAC, F_IMM
