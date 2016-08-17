@@ -1,6 +1,6 @@
 ; vim: ft=nasm
 %include 'forth'
-extern SWAP, DROP
+extern SWAP, DROP, TELL
 
 ; + ( a b -- a+b )
 defcode '+', ADD
@@ -52,3 +52,28 @@ defcode 'number', NUMBER
 .done:
   push rax
   next
+
+section .bss
+dotbuffer:
+resb 20 ; log10(2^64-1)
+dotbuffer_len equ $-dotbuffer
+
+; . ( number -- )
+defcode '.', DOT
+  pop rax
+  mov r8, 10 ; base
+  mov rdi, dotbuffer+dotbuffer_len
+.next:
+  dec rdi
+  xor rdx, rdx
+  idiv r8
+  add rdx, '0'
+  mov [rdi], dl
+  test rax, rax
+  jnz .next
+.done:
+  push rdi
+  sub rdi, dotbuffer+dotbuffer_len
+  neg rdi
+  push rdi
+  next TELL
