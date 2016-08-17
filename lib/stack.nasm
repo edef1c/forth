@@ -35,7 +35,7 @@ defcode 'swap', SWAP
 
 ; drop ( x -- )
 defcode 'drop', DROP
-  pop rax
+  lea rsp, [rsp+8]
   next
 
 ; rot ( w1 w2 w3 -- w2 w3 w1 )
