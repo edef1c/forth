@@ -29,10 +29,8 @@ defcode 'dup', DUP
 
 ; swap ( x y -- y x )
 defcode 'swap', SWAP
-  pop rax
-  pop rbx
-  push rax
-  push rbx
+  popeach rax, rbx
+  pusheach rax, rbx
   next
 
 ; drop ( x -- )
@@ -42,21 +40,13 @@ defcode 'drop', DROP
 
 ; rot ( w1 w2 w3 -- w2 w3 w1 )
 defcode 'rot', ROT
-  pop rax
-  pop rbx
-  pop rcx
-  push rbx
-  push rax
-  push rcx
+  popeach rax, rbx, rcx
+  pusheach rbx, rax, rcx
   next
 
 ; -rot ( w1  w2  w3  -- w3  w1  w2  )
 ; this is gforth's -rot, which appears to work differently from Jones Forth's
 defcode '-rot', NROT
-  pop rax
-  pop rbx
-  pop rcx
-  push rax
-  push rcx
-  push rbx
+  popeach rax, rbx, rcx
+  pusheach rax, rcx, rbx
   next
