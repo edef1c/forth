@@ -34,3 +34,21 @@ defword '/', DIV, DIVMOD, SWAP, DROP, EXIT
 
 ; mod ( dividend divisor -- remainder )
 defword 'mod', MOD, DIVMOD, DROP, EXIT
+
+; number ( str len -- number )
+defcode 'number', NUMBER
+  popeach rcx, rbx
+  xor rax, rax
+  xor rdi, rdi
+  mov r8, 10
+.next:
+  mul r8
+  mov dil, [rbx]
+  sub rdi, '0'
+  add rax, rdi
+  inc rbx
+  dec rcx
+  jnz .next
+.done:
+  push rax
+  next
