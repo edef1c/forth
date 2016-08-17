@@ -1,37 +1,10 @@
 ; vim: ft=nasm
 %include "vm"
 %include "dict"
-extern KEY, LIT, FETCH, EXIT
+extern W0RD, FETCH, LIT, EXIT,
 extern dovar, docol
 extern here, var_here
 extern latest, var_latest
-
-section .data
-wordbuf: times 32 db 0
-wordbuf_len: db 0
-
-; word ( -- str len )
-defcode 'word', W0RD
-  pushret rsi
-  mov byte [wordbuf_len], 0
-.fetch:
-  callword KEY
-  pop rax
-  cmp al, 10
-  je .done
-  xor rsi, rsi
-  mov sil, [wordbuf_len]
-  mov [wordbuf+rsi], rax
-  inc rsi
-  mov [wordbuf_len], sil
-  jmp .fetch
-.done:
-  push wordbuf
-  xor rax, rax
-  mov al, [wordbuf_len]
-  push rax
-  popret rsi
-  next
 
 ; create ( str len -- )
 defcode 'create', CREATE

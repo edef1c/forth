@@ -1,5 +1,5 @@
 objects = hello interpreter
-libs = main core/vm core/linker core/compiler core/heap lib/arith lib/flow lib/stack lib/sys
+libs = main core/vm core/linker core/compiler core/heap lib/arith lib/flow lib/stack lib/sys lib/io
 ASFLAGS = -f elf64 -g
 
 all: $(objects)

@@ -30,10 +30,3 @@ defword 'sysexit', SYS_EXIT, LIT, 60, SYSCALL1
 defword 'sysread', SYS_READ, LIT, 0, SYSCALL3, EXIT
 ; syswrite ( fd buf len -- ret )
 defword 'syswrite', SYS_WRITE, LIT, 1, SYSCALL3, EXIT
-
-; key ( -- char )
-defword 'key', KEY, LIT, 0, SP_FETCH, LIT, 0, SWAP, LIT, 1, SYS_READ, DROP, EXIT
-; emit ( char -- )
-defword 'emit', EMIT, SP_FETCH, LIT, 1, SWAP, LIT, 1, SYS_WRITE, DROP, EXIT
-; tell ( str len -- )
-defword 'tell', TELL, LIT, 0, NROT, SYS_WRITE, DROP, EXIT
