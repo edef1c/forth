@@ -8,16 +8,9 @@ defcode 'trap', TRAP
   int3
   next
 
-%macro synthpop 0-*
-  %rep %0
-    pop %1
-  %rotate 1
-  %endrep
-%endmacro
-
 ; syscall1 ( num -- ret )
 defcode 'syscall1', SYSCALL1
-  synthpop rax, rdi
+  popeach rax, rdi
   syscall
   push rax
   next
@@ -25,7 +18,7 @@ defcode 'syscall1', SYSCALL1
 ; syscall3 ( arg1 arg2 arg3 num -- ret )
 defcode 'syscall3', SYSCALL3
   pushret rsi
-  synthpop rax, rdx, rsi, rdi
+  popeach rax, rdx, rsi, rdi
   syscall
   push rax
   popret rsi

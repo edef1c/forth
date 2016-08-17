@@ -31,3 +31,10 @@
   mov rax, %1
   callword
 %endmacro
+
+%macro popeach 0-*
+  %rep %0
+    pop %1
+  %rotate 1
+  %endrep
+%endmacro
