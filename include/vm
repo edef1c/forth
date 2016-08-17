@@ -9,6 +9,11 @@
   jmp [rax]
 %endmacro
 
+%macro next 1
+  mov rax, %1
+  jmp [rax]
+%endmacro
+
 %macro pushret 1
   lea rbp, [rbp-8]
   mov [rbp], qword %1
