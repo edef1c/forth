@@ -4,10 +4,12 @@ extern SP_FETCH, LIT, SWAP, NROT, SYS_READ, SYS_WRITE, DROP
 
 ; key ( -- char )
 defword 'key', KEY, LIT, 0, SP_FETCH, LIT, 0, SWAP, LIT, 1, SYS_READ, DROP, EXIT
-; emit ( char -- )
-defword 'emit', EMIT, SP_FETCH, LIT, 1, SWAP, LIT, 1, SYS_WRITE, DROP, EXIT
 ; tell ( str len -- )
 defword 'tell', TELL, LIT, 0, NROT, SYS_WRITE, DROP, EXIT
+; emit ( char -- )
+defword 'emit', EMIT, SP_FETCH, LIT, 1, TELL, DROP, EXIT
+; cr ( -- )
+defword 'cr', CR, LIT, 0x0a, EMIT, EXIT
 
 section .data
 wordbuf: times 32 db 0
