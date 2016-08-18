@@ -37,7 +37,7 @@ defcode 'hidden', HIDDEN
   next
 
 ; immediate ( wordptr -- )
-defcode 'immediate', IMMEDIATE
+defcode 'immediate', IMMEDIATE, F_IMM
   pop rdi
   xor byte [rdi+8], F_IMM
   next
