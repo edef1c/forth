@@ -21,6 +21,12 @@ defcode '*', MUL
   push rax
   next
 
+; and ( a b -- a&b )
+defcode 'and', AND
+  pop rax
+  and [rsp], rax
+  next
+
 ; /mod ( dividend divisor -- remainder quotient )
 defcode '/mod', DIVMOD
   xor rdx, rdx
