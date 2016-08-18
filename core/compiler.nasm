@@ -60,6 +60,11 @@ defcode ',', COMMA
   mov [var_HERE], rdi
   next
 
+defcode "'", TICK
+  lodsq
+  push rax
+  next
+
 defword ':', COLON, W0RD, CREATE, LIT, docol, COMMA, LATEST, FETCH, HIDDEN, LBRAC, EXIT
 defwordx ';', SEMICOLON, F_IMM, LIT, EXIT, COMMA, LATEST, FETCH, HIDDEN, LBRAC, EXIT
 
