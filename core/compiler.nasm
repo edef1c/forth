@@ -1,7 +1,7 @@
 ; vim: ft=nasm
 %include "vm"
 %include "dict"
-extern W0RD, FETCH, LIT, EXIT,
+extern W0RD, FIND, TCFA, JUMP, FETCH, LIT, IS_NUMERIC, NUMBER, BRANCH, ZBRANCH, DUP, DUP2, AND, EXIT, TRAP
 extern dovar, docol
 extern here, var_here
 extern latest, var_latest
@@ -62,3 +62,23 @@ defcode ',', COMMA
 
 defword ':', COLON, W0RD, CREATE, LIT, docol, COMMA, latest, FETCH, HIDDEN, LBRAC, EXIT
 defwordx ';', SEMICOLON, F_IMM, LIT, EXIT, COMMA, latest, FETCH, HIDDEN, LBRAC, EXIT
+
+defword 'interpret', INTERPRET, W0RD, DUP2, IS_NUMERIC, ZBRANCH, 8*3, INTERPRET_LITERAL, EXIT, INTERPRET_WORD, EXIT
+
+; interpret-literal
+; ctime: ( str len -- )
+; rtime: ( str len -- n )
+defword 'interpret-literal', INTERPRET_LITERAL, \
+  NUMBER, state, ZBRANCH, 8*5, \
+  LIT, LIT, COMMA, COMMA, \
+  EXIT
+
+; interpret-word ( ?? str len -- ??? )
+defword 'interpret-word', INTERPRET_WORD, \
+  FIND, \
+  state, ZBRANCH, 8*8, \
+  DUP, FETCH, LIT, F_IMM, AND, ZBRANCH, 8*4, \
+  TCFA, JUMP, EXIT, \
+  TRAP
+
+defword 'quit', QUIT, INTERPRET, BRANCH, -8*2
