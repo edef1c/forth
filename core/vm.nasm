@@ -14,6 +14,10 @@ dovar:
   push rbx
   next
 
+defcode 'jump', JUMP
+  pop rax
+  jmp [rax]
+
 defcode 'exit', EXIT
   popret rsi
   next
