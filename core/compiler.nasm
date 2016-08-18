@@ -32,13 +32,13 @@ defcode 'create', CREATE
 
 ; hidden ( wordptr -- )
 defcode 'hidden', HIDDEN
-  pop rax
+  pop rdi
   xor byte [rdi+8], F_HIDDEN
   next
 
 ; immediate ( wordptr -- )
 defcode 'immediate', IMMEDIATE
-  pop rax
+  pop rdi
   xor byte [rdi+8], F_IMM
   next
 
