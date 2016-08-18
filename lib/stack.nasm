@@ -27,6 +27,15 @@ defcode 'dup', DUP
   push qword [rsp]
   next
 
+; dup2 ( x y -- x y x y )
+defcode 'dup2', DUP2
+  sub rsp, 16
+  mov rax, [rsp+16]
+  mov rbx, [rsp+24]
+  mov [rsp+0], rax
+  mov [rsp+8], rbx
+  next
+
 ; swap ( x y -- y x )
 defcode 'swap', SWAP
   popeach rax, rbx
