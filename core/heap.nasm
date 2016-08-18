@@ -6,4 +6,4 @@ extern dovar
 section .bss
 align 4096
 heap: resb 4096*4096
-defvar here, heap
+defvar 'here', HERE, heap

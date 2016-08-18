@@ -2,11 +2,11 @@
 %include "vm"
 %include "dict"
 extern __dict_start, __dict_end, dovar
-defvar latest
+defvar 'latest', LATEST
 
 global linker
 linker:
-  mov rbx, [var_latest]
+  mov rbx, [var_LATEST]
   mov rsi, __dict_start
 .next:
   lodsq
@@ -14,7 +14,7 @@ linker:
   mov rbx, rax
   cmp rsi, __dict_end
   jne .next
-  mov [var_latest], rbx
+  mov [var_LATEST], rbx
   ret
 
 ; find ( str len -- dictptr? )
@@ -22,7 +22,7 @@ defcode 'find', FIND
   pushret rsi
   pop r8  ; str.len
   pop r9  ; str.ptr
-  mov rdx, [var_latest]
+  mov rdx, [var_LATEST]
 .start:
   test rdx, rdx
   je .done
