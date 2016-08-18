@@ -17,8 +17,10 @@ defcode 'create', CREATE
   mov al, cl
   stosb
   ; copy the name
+  mov r8, rsi
   pop rsi
   rep movsb
+  mov rsi, r8
   ; alignment
   add rdi, 7
   and rdi, ~7
