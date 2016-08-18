@@ -10,6 +10,15 @@ defcode 'lit', LIT
   push rax
   next
 
+defcode 'litstring', LITSTRING
+  lodsq
+  push rsi
+  push rax
+  add rsi, rax
+  add rsi, 7
+  and rsi, ~7
+  next
+
 ; fetch ( x-ptr -- x )
 defcode '@', FETCH
   mov rbx, [rsp]
