@@ -24,6 +24,8 @@ defcode 'word', W0RD
   pop rax
   cmp al, 10
   je .done
+  cmp al, ' '
+  je .done
   xor rsi, rsi
   mov sil, [wordbuf_len]
   mov [wordbuf+rsi], rax
